@@ -3,14 +3,17 @@
 2 - identificadores de variaveis: "minúsculas_separadas_com_underscore"
 3 - nomes de funções: PalavrasComeçandoPorMaiúscula'''
 
-#funcionaro => nome, login, senha, e-mail
+#funcionário => nome, login, senha, e-mail
 lista_funcionarios = []
 funcionario = ['Administrador','admin','123','admin@iesp.com']
 lista_funcionarios.append(funcionario)
 
-
 categorias = []
 tematicas = []
+
+#livro => titulo,autor,ano,editora,edicao,quantidade,habilitacao
+lista_livros = []
+
 
 def login (login,senha):
     for f in lista_funcionarios:
@@ -19,18 +22,16 @@ def login (login,senha):
     return None
 
 
-'''def cadastro_livro():
-    codigo = 
-    livro=[]
+def cadastro_livro():
     titulo=input(" titulo do livro:")
     autor=input(" autor :")
     ano=int(input(" ano :"))
     editora=input(" editora :")
     edicao=input(" edição :")
     quantidade= int(input("Digite uma quantidade de exemplares:"))
+    lista_livros.append([titulo,autor,ano,editora,edicao,quantidade,False])
 
     print("Livro cadastrado com sucesso!")
-'''
 
 '''
 def remove_livro():
@@ -38,6 +39,7 @@ def remove_livro():
     print("Título removido com sucesso!")
 
 def status():
+    
     if status == True :
         
 
@@ -84,7 +86,7 @@ def cadastro_tematica ():
 
 
 def main():
-    print("Bem vindo a Morais Library")
+    print("Bem vindo à Morais Library")
     tentativas = 0
     while True:
         login_func = input("Digite seu login: ")
