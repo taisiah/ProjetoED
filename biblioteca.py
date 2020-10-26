@@ -10,6 +10,7 @@ lista_funcionarios.append(funcionario)
 
 
 categorias = []
+tematicas = []
 
 def login (login,senha):
     for f in lista_funcionarios:
@@ -19,7 +20,7 @@ def login (login,senha):
 
 
 '''def cadastro_livro():
-    código =
+    codigo = 
     livro=[]
     titulo=input(" titulo do livro:")
     autor=input(" autor :")
@@ -29,13 +30,16 @@ def login (login,senha):
     quantidade= int(input("Digite uma quantidade de exemplares:"))
 
     print("Livro cadastrado com sucesso!")
+'''
 
-
+'''
 def remove_livro():
 
     print("Título removido com sucesso!")
 
 def status():
+    if status == True :
+        
 
 def buscar():
     busca = input("Digite nome para busca")
@@ -48,7 +52,15 @@ def print_menu():
     print("Digite a opção desejada: ")
     print("    1 - CADASTRAR CATEGORIA ")
     print("    2 - CADASTRAR TEMÁTICA")
-    print("    10 - Sair ")
+    print("    3 - CADASTRAR LIVRO")
+    print("    4 - HABILITAR RESERVA")
+    print("    5 - ATUALIZAR QUANTIDADE DE EXEMPLARES")
+    print("    6 - REMOVER TÍTULO")
+    print("    7 - BUSCA")
+    print("    8 - IMPORTAR DADOS")
+    print("    9 - RELATÓRIOS")
+    print("    10 - STATUS")
+    print("    11 - Sair ")
 
 def cadastro_categoria ():
     categoria = input("Digite o nome da categoria que deseja cadastrar: ")
@@ -58,6 +70,14 @@ def cadastro_categoria ():
         categorias.append(categoria)
         print("Categoria adicionada com sucesso!")
         categorias.sort()
+def cadastro_tematica ():
+    tematica = input("Digite o nome da temática que deseja cadastrar: ")
+    if tematica in tematicas :
+        print("Temática existente")
+    else:
+        tematicas.append(tematica)
+        print("Temática adicionada com sucesso!")
+        tematicas.sort()
 
 
 
@@ -65,25 +85,50 @@ def cadastro_categoria ():
 
 def main():
     print("Bem vindo a Morais Library")
+    tentativas = 0
     while True:
         login_func = input("Digite seu login: ")
         senha_func = input("Digite sua senha: ")
         nome = login (login_func,senha_func)
         if nome == None:
             print("Login ou senha inválido, digite novamente.")
+            tentativas+=1
+            if tentativas >= 3 :
+                print ("Esqueceu sua senha? Entre em contato com o administrador.")
+                return
         else:
+            tentativas=0
             print("Bem vindo,",nome)
             while True:
                 print_menu()
                 opcao = input()
                 if opcao == '1':
                     cadastro_categoria()
+                elif opcao == '2':
+                    cadastro_tematica()
+                elif opcao == '3':
+                    cadastro_livro()
+                elif opcao == '4':
+                    #printar função enquanto não faz
+                    print("HABILITAR RESERVA")
+                elif opcao == '5':
+                    print("ATUALIZAR QUANTIDADE ACERVO")
+                elif opcao == '6':
+                    print("REMOVER")
+                elif opcao == '7':
+                    print("BUSCA")
+                elif opcao == '8':
+                    print("IMPORTAR")
+                elif opcao == '9':
+                    print("RELATORIO")
                 elif opcao == '10':
+                    print("STATUS")
+                elif opcao == '11':
                     break
                 else:
                     print("Opção inválida")
 
-        '''esqueci a senha'''
+
 
 if __name__ == "__main__":
     main()
