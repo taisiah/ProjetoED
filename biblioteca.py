@@ -7,7 +7,9 @@
 lista_funcionarios = []
 funcionario = ['Administrador','admin','123','admin@iesp.com']
 lista_funcionarios.append(funcionario)
-logado = False
+
+
+categorias = []
 
 def login (login,senha):
     for f in lista_funcionarios:
@@ -41,6 +43,26 @@ def buscar():
 
 def relatorio():
 '''
+
+def print_menu():
+    print("Digite a opção desejada: ")
+    print("    1 - CADASTRAR CATEGORIA ")
+    print("    2 - CADASTRAR TEMÁTICA")
+    print("    10 - Sair ")
+
+def cadastro_categoria ():
+    categoria = input("Digite o nome da categoria que deseja cadastrar: ")
+    if categoria in categorias :
+        print("Categoria existente")
+    else:
+        categorias.append(categoria)
+        print("Categoria adicionada com sucesso!")
+        categorias.sort()
+
+
+
+
+
 def main():
     print("Bem vindo a Morais Library")
     while True:
@@ -51,7 +73,17 @@ def main():
             print("Login ou senha inválido, digite novamente.")
         else:
             print("Bem vindo,",nome)
-            break
+            while True:
+                print_menu()
+                opcao = input()
+                if opcao == '1':
+                    cadastro_categoria()
+                elif opcao == '10':
+                    break
+                else:
+                    print("Opção inválida")
+
+        '''esqueci a senha'''
 
 if __name__ == "__main__":
     main()
