@@ -1,23 +1,30 @@
+'''Guia de Estilo
+1 - Separe funções e definições de classe com duas linhas em branco
+2 - identificadores de variaveis: "minúsculas_separadas_com_underscore"
+3 - nomes de funções: PalavrasComeçandoPorMaiúscula'''
+
+#funcionaro => nome, login, senha, e-mail
+lista_funcionarios = []
+funcionario = ['Administrador','admin','123','admin@iesp.com']
+lista_funcionarios.append(funcionario)
+logado = False
+
+def login (login,senha):
+    for f in lista_funcionarios:
+        if f[1] == login and f[2] == senha:
+            return f[0]
+    return None
 
 
-livros = {}
-
-nome = "java"
-autor = "pedro"
-ano = 2010
-
-livros[nome] = [autor,ano]
-
-
-def cadastro_livro():
+'''def cadastro_livro():
     código =
     livro=[]
-    titulo=input("Digite o titulo do livro")
-    autor=input("Digite o autor do livro:")
-    ano=int(input("Digite o ano do livro:"))
-    editora=input("Digite a editora do livro:")
-    edicao=input("Digite a localização do livro")
-    quantidade= int(input("Digite uma quantidade"))
+    titulo=input(" titulo do livro:")
+    autor=input(" autor :")
+    ano=int(input(" ano :"))
+    editora=input(" editora :")
+    edicao=input(" edição :")
+    quantidade= int(input("Digite uma quantidade de exemplares:"))
 
     print("Livro cadastrado com sucesso!")
 
@@ -33,13 +40,18 @@ def buscar():
     if 'busca' ==
 
 def relatorio():
-
+'''
 def main():
-    livro = []
-    titulo = input("Digite o titulo do livro")
-    autor = input("Digite o autor do livro:")
-    ano = int(input("Digite o ano do livro:"))
-    editora = input("Digite a editora do livro:")
-    edicao = input("Digite a localização do livro")
-    quantidade = int(input("Digite uma quantidade"))
+    print("Bem vindo a Morais Library")
+    while True:
+        login_func = input("Digite seu login: ")
+        senha_func = input("Digite sua senha: ")
+        nome = login (login_func,senha_func)
+        if nome == None:
+            print("Login ou senha inválido, digite novamente.")
+        else:
+            print("Bem vindo,",nome)
+            break
 
+if __name__ == "__main__":
+    main()
