@@ -23,30 +23,39 @@ def login (login,senha):
 
 
 def cadastro_livro():
-    titulo=input(" titulo do livro:")
-    autor=input(" autor :")
-    ano=int(input(" ano :"))
-    editora=input(" editora :")
-    edicao=input(" edição :")
-    quantidade= int(input("Digite uma quantidade de exemplares:"))
-    lista_livros.append([titulo,autor,ano,editora,edicao,quantidade,False])
+    livro = {
+    'titulo':input(" titulo do livro:").upper(),
+    'autor':input(" autor :"),
+    'ano':int(input(" ano :")),
+    'editora':input(" editora :"),
+    'edicao':input(" edição :"),
+    'quantidade': int(input("Digite uma quantidade de exemplares:")),
+    'status':False
+    }
+    lista_livros.append(livro)
 
     print("Livro cadastrado com sucesso!")
 
+
+def remove_livro(tituloLivro):
+    posicao = 0
+    global lista_livros
+    for i in range (0, len(lista_livros)):
+        if (lista_livros[i]['titulo']) == tituloLivro:
+            print (lista_livros[i])
+            posicao = i
+
+    lista_livros.pop(posicao)
+
+    print(f"Livro {tituloLivro} removido com sucesso!")
+
 '''
-def remove_livro():
-
-    print("Título removido com sucesso!")
-
 def status():
-    
     if status == True :
         
-
 def buscar():
     busca = input("Digite nome para busca")
     if 'busca' ==
-
 def relatorio():
 '''
 
@@ -81,10 +90,6 @@ def cadastro_tematica ():
         print("Temática adicionada com sucesso!")
         tematicas.sort()
 
-
-
-
-
 def main():
     print("Bem vindo à Morais Library")
     tentativas = 0
@@ -116,7 +121,8 @@ def main():
                 elif opcao == '5':
                     print("ATUALIZAR QUANTIDADE ACERVO")
                 elif opcao == '6':
-                    print("REMOVER")
+                    tituloBaixar = input('Qual o titulo do livro deseja remover: ').upper()
+                    remove_livro(tituloBaixar)
                 elif opcao == '7':
                     print("BUSCA")
                 elif opcao == '8':
