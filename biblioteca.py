@@ -23,13 +23,14 @@ def login (login,senha):
 
 
 def cadastro_livro():
+    print("CADASTRO DE LIVRO")
     livro = {
-    'titulo':input(" titulo do livro:").upper(),
-    'autor':input(" autor :"),
-    'ano':int(input(" ano :")),
-    'editora':input(" editora :"),
-    'edicao':input(" edição :"),
-    'quantidade': int(input("Digite uma quantidade de exemplares:")),
+    'titulo':input(" Título....: ").upper(),
+    'autor':input(" Autor.....: "),
+    'ano':int(input(" Ano.......: ")),
+    'editora':input(" Editora...: "),
+    'edicao':input(" Edição....: "),
+    'quantidade':int(input(" Quantidade: ")),
     'status':False
     }
     lista_livros.append(livro)
@@ -38,29 +39,35 @@ def cadastro_livro():
 
 
 def remove_livro(tituloLivro):
-    posicao = 0
     global lista_livros
     for i in range (0, len(lista_livros)):
         if (lista_livros[i]['titulo']) == tituloLivro:
             print (lista_livros[i])
-            posicao = i
-
-    lista_livros.pop(posicao)
+            lista_livros.pop(i)
+            break
 
     print(f"Livro {tituloLivro} removido com sucesso!")
 
 '''
 def status():
     if status == True :
-        
-def buscar():
-    busca = input("Digite nome para busca")
-    if 'busca' ==
 def relatorio():
 '''
 
+def busca_livro(tituloLivro):
+    global lista_livros
+    global livro
+    for i in range (0, len(lista_livros)):
+        if (lista_livros[i]['titulo']) == tituloLivro:
+            print (f"Título...: {lista_livros[i]['titulo']}")
+            print (f"Autor....: {lista_livros[i]['autor']}")
+            print (f"Ano......: {lista_livros[i]['ano']}")
+            print (f"Editora..: {lista_livros[i]['editora']}")
+            break
+
+
 def print_menu():
-    print("Digite a opção desejada: ")
+    print("\nDigite a opção desejada: ")
     print("    1 - CADASTRAR CATEGORIA ")
     print("    2 - CADASTRAR TEMÁTICA")
     print("    3 - CADASTRAR LIVRO")
@@ -81,6 +88,7 @@ def cadastro_categoria ():
         categorias.append(categoria)
         print("Categoria adicionada com sucesso!")
         categorias.sort()
+
 def cadastro_tematica ():
     tematica = input("Digite o nome da temática que deseja cadastrar: ")
     if tematica in tematicas :
@@ -121,10 +129,9 @@ def main():
                 elif opcao == '5':
                     print("ATUALIZAR QUANTIDADE ACERVO")
                 elif opcao == '6':
-                    tituloBaixar = input('Qual o titulo do livro deseja remover: ').upper()
-                    remove_livro(tituloBaixar)
+                    remove_livro(input('Qual o titulo do livro deseja remover: ').upper())
                 elif opcao == '7':
-                    print("BUSCA")
+                    busca_livro(input('Qual o titulo do livro deseja pesquisar: ').upper())
                 elif opcao == '8':
                     print("IMPORTAR")
                 elif opcao == '9':
