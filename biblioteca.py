@@ -50,25 +50,26 @@ def cadastro_livro():
     print("\n=-=-=-=-=-= CADASTRAR NOVO LIVRO =-=-=-=-=-=\n")
 
     livro = {
-    'titulo':input(" Título....: ").upper(),
-    'autor':input(" Autor.....: "),
-    'ano':int(input(" Ano.......: ")),
-    'editora':input(" Editora...: "),
-    'edicao':input(" Edição....: "),
-    'quantidade':int(input(" Quantidade: ")),
+    'titulo':input("Título....: ").upper(),
+    'autor':input("Autor.....: "),
+    'ano':int(input("Ano.......: ")),
+    'editora':input("Editora...: "),
+    'edicao':input("Edição....: "),
+    'quantidade':int(input("Quantidade: ")),
+    'assunto':input("Assunto...: "),
     'reserva': False
     }
 
     print(' Categorias: ')
     for i in range (0, len(categorias)):
         print (f' [{i+1} - {categorias[i]}]')
-    posicao = int(input(' Informe o codigo da categoria do livro: '))-1
+    posicao = int(input('Informe o codigo da categoria do livro: '))-1
     livro ['categoria'] = categorias[posicao]
 
     print(' Temáticas: ')
     for i in range (0, len(tematicas)):
         print (f' [{i+1} - {tematicas[i]}]')
-    posicao = int(input(' Informe o codigo da temática do livro: '))-1
+    posicao = int(input('Informe o codigo da temática do livro: '))-1
     livro ['tematica'] = tematicas[posicao]
 
     lista_livros.append(livro)
@@ -124,21 +125,71 @@ def remove_livro(tituloLivro):
     print(f"Livro {tituloLivro} removido com sucesso!")
 
 
-def busca_livro(tituloLivro):
+def busca_livro():
     global lista_livros
 
-    print("\n=-=-=-=-=-= LIVRO PESQUISADO =-=-=-=-=-=\n")
+    print("\n=-=-=-=-=-=-=-= BUSCAR LIVRO =-=-=-=-=-=-=-=\n")
+
+    filtro = int(input('[1] Título - [2] Autor - [3] Ano - [4] Assunto \nInforme o filtro a ser utilizado na busca: '))
     
-    for i in range (0, len(lista_livros)):
-        if (lista_livros[i]['titulo']) == tituloLivro:
-            print (f"Título....: {lista_livros[i]['titulo']}")
-            print (f"Autor.....: {lista_livros[i]['autor']}")
-            print (f"Ano.......: {lista_livros[i]['ano']}")
-            print (f"Editora...: {lista_livros[i]['editora']}")
-            print (f"Categoria.: {lista_livros[i]['categoria']}")
-            print (f"Temática..: {lista_livros[i]['tematica']}")
-            print (f"Reserva...: {lista_livros[i]['reserva']}")
-            break
+    if filtro == 1:
+        informacao_busca = input('Informe o TÍTULO do livro: ')
+        for i in range (0, len(lista_livros)):
+            if (lista_livros[i]['titulo']) == informacao_busca:
+                print (f"\nTítulo....: {lista_livros[i]['titulo']}")
+                print (f"Autor.....: {lista_livros[i]['autor']}")
+                print (f"Ano.......: {lista_livros[i]['ano']}")
+                print (f"Editora...: {lista_livros[i]['editora']}")
+                print (f"Assunto...: {lista_livros[i]['assunto']}")
+                print (f"Categoria.: {lista_livros[i]['categoria']}")
+                print (f"Temática..: {lista_livros[i]['tematica']}")
+                print (f"Reserva...: {lista_livros[i]['reserva']}")
+                
+
+    elif filtro == 2:
+        informacao_busca = input('Informe o AUTOR do livro: ')
+        for i in range (0, len(lista_livros)):
+            if (lista_livros[i]['autor']) == informacao_busca:
+                print (f"\nTítulo....: {lista_livros[i]['titulo']}")
+                print (f"Autor.....: {lista_livros[i]['autor']}")
+                print (f"Ano.......: {lista_livros[i]['ano']}")
+                print (f"Editora...: {lista_livros[i]['editora']}")
+                print (f"Assunto...: {lista_livros[i]['assunto']}")
+                print (f"Categoria.: {lista_livros[i]['categoria']}")
+                print (f"Temática..: {lista_livros[i]['tematica']}")
+                print (f"Reserva...: {lista_livros[i]['reserva']}")
+                
+
+    elif filtro == 3:
+        informacao_busca = input('Informe o ANO do livro: ')
+        for i in range (0, len(lista_livros)):
+            if (lista_livros[i]['ano']) == informacao_busca:
+                print (f"\nTítulo....: {lista_livros[i]['titulo']}")
+                print (f"Autor.....: {lista_livros[i]['autor']}")
+                print (f"Ano.......: {lista_livros[i]['ano']}")
+                print (f"Editora...: {lista_livros[i]['editora']}")
+                print (f"Assunto...: {lista_livros[i]['assunto']}")
+                print (f"Categoria.: {lista_livros[i]['categoria']}")
+                print (f"Temática..: {lista_livros[i]['tematica']}")
+                print (f"Reserva...: {lista_livros[i]['reserva']}")
+                
+
+    elif filtro == 4:
+        informacao_busca = input('Informe o ASSUNTO do livro: ')
+        for i in range (0, len(lista_livros)):
+            if (lista_livros[i]['assunto']) == informacao_busca:
+                print (f"\nTítulo....: {lista_livros[i]['titulo']}")
+                print (f"Autor.....: {lista_livros[i]['autor']}")
+                print (f"Ano.......: {lista_livros[i]['ano']}")
+                print (f"Editora...: {lista_livros[i]['editora']}")
+                print (f"Assunto...: {lista_livros[i]['assunto']}")
+                print (f"Categoria.: {lista_livros[i]['categoria']}")
+                print (f"Temática..: {lista_livros[i]['tematica']}")
+                print (f"Reserva...: {lista_livros[i]['reserva']}")
+                
+    else:
+        print('Opção Inválida!')
+
 
 def repete_funcao(funcao):
     continua = 'S'
@@ -203,7 +254,7 @@ def main():
                 elif opcao == '6':
                     remove_livro(input('Titulo do livro deseja remover: ').upper())
                 elif opcao == '7':
-                    busca_livro(input('Titulo do livro deseja pesquisar: ').upper())
+                    busca_livro()
                 elif opcao == '8':
                     print("IMPORTAR")
                 elif opcao == '9':
