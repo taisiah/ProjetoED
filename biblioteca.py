@@ -23,7 +23,7 @@ def login (login,senha):
 
 
 def cadastro_livro():
-    print("CADASTRO DE LIVRO")
+    print("\nCADASTRO DE LIVRO")
     livro = {
     'titulo':input(" Título....: ").upper(),
     'autor':input(" Autor.....: "),
@@ -40,6 +40,8 @@ def cadastro_livro():
 
 def remove_livro(tituloLivro):
     global lista_livros
+    print("\nREMOVER LIVRO")
+
     for i in range (0, len(lista_livros)):
         if (lista_livros[i]['titulo']) == tituloLivro:
             print (lista_livros[i])
@@ -47,6 +49,23 @@ def remove_livro(tituloLivro):
             break
 
     print(f"Livro {tituloLivro} removido com sucesso!")
+
+
+def ajusta_acervo(tituloLivro):
+    global lista_livros
+    global livro
+    print("\nAJUSTAR ESTOQUE DO ACERVO")
+
+    for i in range (0, len(lista_livros)):
+        if (lista_livros[i]['titulo']) == tituloLivro:
+            print(f'Livro: {lista_livros[i]["titulo"]}')
+            print(f'Estoque: {lista_livros[i]["quantidade"]} un')
+            lista_livros[i]['quantidade'] = int(input('Digite a nova quantidade em estoque: '))
+            break
+
+    print('\nQuantidade de exemplares ajustada com sucesso!') 
+    print(f'A nova quantidade de acervo do livro {lista_livros[i]["titulo"]} é {lista_livros[i]["quantidade"]} un') 
+
 
 '''
 def status():
@@ -57,6 +76,7 @@ def relatorio():
 def busca_livro(tituloLivro):
     global lista_livros
     global livro
+
     for i in range (0, len(lista_livros)):
         if (lista_livros[i]['titulo']) == tituloLivro:
             print (f"Título...: {lista_livros[i]['titulo']}")
@@ -65,10 +85,17 @@ def busca_livro(tituloLivro):
             print (f"Editora..: {lista_livros[i]['editora']}")
             break
 
+def repeteFuncao(funcao):
+    continua = 'S'
+    while continua in 'Ss':
+        funcao()
+        continua = input('Fazer novo cadastro [S/N]? ')
 
-def print_menu():
-    print("\nDigite a opção desejada: ")
-    print("    1 - CADASTRAR CATEGORIA ")
+
+def menu():
+    print("\n=-=-=-=-=-=-=-= MENU PRINCIPAL =-=-=-=-=-=-=-=")
+    
+    print("\n    1 - CADASTRAR CATEGORIA ")
     print("    2 - CADASTRAR TEMÁTICA")
     print("    3 - CADASTRAR LIVRO")
     print("    4 - HABILITAR RESERVA")
@@ -80,7 +107,11 @@ def print_menu():
     print("    10 - STATUS")
     print("    11 - Sair ")
 
+    return input("\nDigite a opção desejada: ")
+
+
 def cadastro_categoria ():
+    print("ADICIONAR CATEGORIA")
     categoria = input("Digite o nome da categoria que deseja cadastrar: ")
     if categoria in categorias :
         print("Categoria existente")
@@ -90,6 +121,7 @@ def cadastro_categoria ():
         categorias.sort()
 
 def cadastro_tematica ():
+    print("ADICIONAR TEMÁTICA")
     tematica = input("Digite o nome da temática que deseja cadastrar: ")
     if tematica in tematicas :
         print("Temática existente")
@@ -99,10 +131,10 @@ def cadastro_tematica ():
         tematicas.sort()
 
 def main():
-    print("Bem vindo à Morais Library")
+    print("\n=-=-=-=-=-= MORAIS LIBRARY - Sistema de Gestão Bibliotecária =-=-=-=-=-=")
     tentativas = 0
     while True:
-        login_func = input("Digite seu login: ")
+        login_func = input("\nDigite seu login: ")
         senha_func = input("Digite sua senha: ")
         nome = login (login_func,senha_func)
         if nome == None:
@@ -114,24 +146,24 @@ def main():
         else:
             tentativas=0
             print("Bem vindo,",nome)
+
             while True:
-                print_menu()
-                opcao = input()
+                opcao = menu()
                 if opcao == '1':
-                    cadastro_categoria()
+                    repeteFuncao(lambda: cadastro_categoria())
                 elif opcao == '2':
-                    cadastro_tematica()
+                    repeteFuncao(lambda: cadastro_tematica())
                 elif opcao == '3':
-                    cadastro_livro()
+                    repeteFuncao(lambda: cadastro_livro())
                 elif opcao == '4':
                     #printar função enquanto não faz
                     print("HABILITAR RESERVA")
                 elif opcao == '5':
-                    print("ATUALIZAR QUANTIDADE ACERVO")
+                    ajusta_acervo(input('Titulo do livro deseja ajustar o acervo: ').upper())
                 elif opcao == '6':
-                    remove_livro(input('Qual o titulo do livro deseja remover: ').upper())
+                    remove_livro(input('Titulo do livro deseja remover: ').upper())
                 elif opcao == '7':
-                    busca_livro(input('Qual o titulo do livro deseja pesquisar: ').upper())
+                    busca_livro(input('Titulo do livro deseja pesquisar: ').upper())
                 elif opcao == '8':
                     print("IMPORTAR")
                 elif opcao == '9':
