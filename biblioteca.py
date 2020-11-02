@@ -22,8 +22,8 @@ def login (login,senha):
     return None
 
 def cadastro_categoria ():
-    print("ADICIONAR CATEGORIA")
-    categoria = input("Digite o nome da categoria que deseja cadastrar: ")
+    print("\n=-=-=-=-=-= ADICIONAR CATEGORIA =-=-=-=-=-=\n")
+    categoria = input("Digite o nome da categoria que deseja cadastrar: ").upper()
     if categoria in categorias :
         print("Categoria existente")
     else:
@@ -33,8 +33,8 @@ def cadastro_categoria ():
 
 
 def cadastro_tematica ():
-    print("ADICIONAR TEMÁTICA")
-    tematica = input("Digite o nome da temática que deseja cadastrar: ")
+    print("\n=-=-=-=-=-= ADICIONAR TEMÁTICA =-=-=-=-=-=\n")
+    tematica = input("Digite o nome da temática que deseja cadastrar: ").upper()
     if tematica in tematicas :
         print("Temática existente")
     else:
@@ -44,7 +44,11 @@ def cadastro_tematica ():
 
 
 def cadastro_livro():
-    print("\nCADASTRO DE LIVRO")
+    global tematicas
+    global categorias
+    
+    print("\n=-=-=-=-=-= CADASTRAR NOVO LIVRO =-=-=-=-=-=\n")
+
     livro = {
     'titulo':input(" Título....: ").upper(),
     'autor':input(" Autor.....: "),
@@ -52,17 +56,48 @@ def cadastro_livro():
     'editora':input(" Editora...: "),
     'edicao':input(" Edição....: "),
     'quantidade':int(input(" Quantidade: ")),
-    'status':False
+    'reserva': False
     }
+
+    print(' Categorias: ')
+    for i in range (0, len(categorias)):
+        print (f' [{i+1} - {categorias[i]}]')
+    posicao = int(input(' Informe o codigo da categoria do livro: '))-1
+    livro ['categoria'] = categorias[posicao]
+
+    print(' Temáticas: ')
+    for i in range (0, len(tematicas)):
+        print (f' [{i+1} - {tematicas[i]}]')
+    posicao = int(input(' Informe o codigo da temática do livro: '))-1
+    livro ['tematica'] = tematicas[posicao]
+
     lista_livros.append(livro)
 
     print("Livro cadastrado com sucesso!")
     
 
+def habilita_reserva(tituloLivro):
+    global lista_livros
+    
+    print("\n=-=-=-=-=-= HABILITAR RESERVA DE LIVRO =-=-=-=-=-=\n")
+
+    reservar = input('Disponibilizar livro para reserva [S/N]? ')
+
+    for i in range (0, len(lista_livros)):
+        if (lista_livros[i]['titulo']) == tituloLivro:
+            if reservar in 'Ss':
+                lista_livros[i]['status'] = True
+                print(f"Informação atualizada! Livro {tituloLivro} disponível para reserva.")
+            else:
+                lista_livros[i]['status'] = False
+                print(f"Informação atualizada! Livro {tituloLivro} indisponível para reserva.")
+            break
+   
+
 def ajusta_acervo(tituloLivro):
     global lista_livros
-    global livro
-    print("\nAJUSTAR ESTOQUE DO ACERVO")
+
+    print("\n=-=-=-=-=-= AJUSTAR ESTOQUE DO ACERVO =-=-=-=-=-=\n")
 
     for i in range (0, len(lista_livros)):
         if (lista_livros[i]['titulo']) == tituloLivro:
@@ -77,7 +112,8 @@ def ajusta_acervo(tituloLivro):
 
 def remove_livro(tituloLivro):
     global lista_livros
-    print("\nREMOVER LIVRO")
+
+    print("\n=-=-=-=-=-= REMOVER LIVRO =-=-=-=-=-=\n")
 
     for i in range (0, len(lista_livros)):
         if (lista_livros[i]['titulo']) == tituloLivro:
@@ -90,14 +126,18 @@ def remove_livro(tituloLivro):
 
 def busca_livro(tituloLivro):
     global lista_livros
-    global livro
 
+    print("\n=-=-=-=-=-= LIVRO PESQUISADO =-=-=-=-=-=\n")
+    
     for i in range (0, len(lista_livros)):
         if (lista_livros[i]['titulo']) == tituloLivro:
-            print (f"Título...: {lista_livros[i]['titulo']}")
-            print (f"Autor....: {lista_livros[i]['autor']}")
-            print (f"Ano......: {lista_livros[i]['ano']}")
-            print (f"Editora..: {lista_livros[i]['editora']}")
+            print (f"Título....: {lista_livros[i]['titulo']}")
+            print (f"Autor.....: {lista_livros[i]['autor']}")
+            print (f"Ano.......: {lista_livros[i]['ano']}")
+            print (f"Editora...: {lista_livros[i]['editora']}")
+            print (f"Categoria.: {lista_livros[i]['categoria']}")
+            print (f"Temática..: {lista_livros[i]['tematica']}")
+            print (f"Reserva...: {lista_livros[i]['reserva']}")
             break
 
 def repete_funcao(funcao):
@@ -106,38 +146,36 @@ def repete_funcao(funcao):
         funcao()
         continua = input('Fazer novo cadastro [S/N]? ')
 
-
 '''
 def status():
-    if status == True :
+
 def relatorio():
 '''
 
-
 def menu():
-    print("\n=-=-=-=-=-=-=-= MENU PRINCIPAL =-=-=-=-=-=-=-=")
+    print("\n=-=-=-=-=-=-=-= MENU PRINCIPAL =-=-=-=-=-=-=-=\n")
     
-    print("\n    1 - CADASTRAR CATEGORIA ")
-    print("    2 - CADASTRAR TEMÁTICA")
-    print("    3 - CADASTRAR LIVRO")
-    print("    4 - HABILITAR RESERVA")
-    print("    5 - ATUALIZAR QUANTIDADE DE EXEMPLARES")
-    print("    6 - REMOVER TÍTULO")
-    print("    7 - BUSCA")
-    print("    8 - IMPORTAR DADOS")
-    print("    9 - RELATÓRIOS")
-    print("    10 - STATUS")
+    print("    1  - CADASTRAR CATEGORIA ")
+    print("    2  - CADASTRAR TEMÁTICA")
+    print("    3  - CADASTRAR LIVRO")
+    print("    4  - HABILITAR RESERVA")
+    print("    5  - ATUALIZAR QUANTIDADE DE EXEMPLARES")
+    print("    6  - REMOVER TÍTULO")
+    print("    7  - BUSCAR LIVRO")
+    print("    8  - IMPORTAR DADOS")
+    print("    9  - RELATÓRIOS")
+    print("    10 - STATUS DO LIVRO")
     print("    11 - Sair ")
 
     return input("\nDigite a opção desejada: ")
 
 
 def main():
-    print("\n=-=-=-=-=-= MORAIS LIBRARY - Sistema de Gestão Bibliotecária =-=-=-=-=-=")
+    print("\n=-=-=-=-=-= MORAIS LIBRARY - Sistema de Gestão Bibliotecária =-=-=-=-=-=\n")
     tentativas = 0
     
     while True:
-        login_func = input("\nDigite seu login: ")
+        login_func = input("Digite seu login: ")
         senha_func = input("Digite sua senha: ")
         nome = login (login_func,senha_func)
         if nome == None:
@@ -159,8 +197,7 @@ def main():
                 elif opcao == '3':
                     repete_funcao(lambda: cadastro_livro())
                 elif opcao == '4':
-                    #printar função enquanto não faz
-                    print("HABILITAR RESERVA")
+                    habilita_reserva(input('Titulo do livro para alterar disponibilização reserva: ').upper())
                 elif opcao == '5':
                     ajusta_acervo(input('Titulo do livro deseja ajustar o acervo: ').upper())
                 elif opcao == '6':
@@ -172,7 +209,7 @@ def main():
                 elif opcao == '9':
                     print("RELATORIO")
                 elif opcao == '10':
-                    print("STATUS")
+                    print("STATUS DO LIVRO")                    
                 elif opcao == '11':
                     break
                 else:
