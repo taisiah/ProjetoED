@@ -50,14 +50,14 @@ def cadastro_livro():
     print("\n=-=-=-=-=-= CADASTRAR NOVO LIVRO =-=-=-=-=-=\n")
 
     livro = {
-    'titulo':input("Título....: ").upper(),
-    'autor':input("Autor.....: "),
-    'ano':int(input("Ano.......: ")),
-    'editora':input("Editora...: "),
-    'edicao':input("Edição....: "),
-    'quantidade':int(input("Quantidade: ")),
-    'assunto':input("Assunto...: "),
-    'reserva': False
+        'titulo':input("Título....: ").upper(),
+        'autor':input("Autor.....: "),
+        'ano':int(input("Ano.......: ")),
+        'editora':input("Editora...: "),
+        'edicao':input("Edição....: "),
+        'quantidade':int(input("Quantidade: ")),
+        'assunto':input("Assunto...: "),
+        'reserva': False
     }
 
     print(' Categorias: ')
@@ -198,9 +198,11 @@ def repete_funcao(funcao):
         continua = input('Fazer novo cadastro [S/N]? ')
 
 '''
-def status():
+def importa_dados():
 
-def relatorio():
+def relatorios():
+
+def status():
 '''
 
 def menu():
