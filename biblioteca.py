@@ -23,6 +23,7 @@ def login (login,senha):
 
 def cadastro_categoria ():
     print("\n=-=-=-=-=-= ADICIONAR CATEGORIA =-=-=-=-=-=\n")
+    arquivocategorias = open("arqcategorias.txt",'a')
     categoria = input("Digite o nome da categoria que deseja cadastrar: ").upper()
     if categoria in categorias :
         print("Categoria existente")
@@ -30,10 +31,12 @@ def cadastro_categoria ():
         categorias.append(categoria)
         print("Categoria adicionada com sucesso!")
         categorias.sort()
+        arquivocategorias.writelines(categorias)
 
 
 def cadastro_tematica ():
     print("\n=-=-=-=-=-= ADICIONAR TEMÁTICA =-=-=-=-=-=\n")
+    arquivotematcias = open("arqtematicas.txt", 'a')
     tematica = input("Digite o nome da temática que deseja cadastrar: ").upper()
     if tematica in tematicas :
         print("Temática existente")
@@ -41,6 +44,8 @@ def cadastro_tematica ():
         tematicas.append(tematica)
         print("Temática adicionada com sucesso!")
         tematicas.sort()
+        arquivotematicas.writelines(tematicas)
+
 
 
 def cadastro_livro():
