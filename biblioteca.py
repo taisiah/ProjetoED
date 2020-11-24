@@ -31,12 +31,15 @@ def cadastro_categoria ():
         categorias.append(categoria)
         print("Categoria adicionada com sucesso!")
         categorias.sort()
-        arquivocategorias.writelines(categorias)
+        saida = []
+        for e in categorias:
+            saida.append(e+"\n")
+        arquivocategorias.writelines(saida)
 
 
 def cadastro_tematica ():
     print("\n=-=-=-=-=-= ADICIONAR TEMÁTICA =-=-=-=-=-=\n")
-    arquivotematcias = open("arqtematicas.txt", 'a')
+    arquivotematicas = open("arqtematicas.txt", 'a')
     tematica = input("Digite o nome da temática que deseja cadastrar: ").upper()
     if tematica in tematicas :
         print("Temática existente")
@@ -44,7 +47,10 @@ def cadastro_tematica ():
         tematicas.append(tematica)
         print("Temática adicionada com sucesso!")
         tematicas.sort()
-        arquivotematicas.writelines(tematicas)
+        saida = []
+        for e in tematicas:
+            saida.append(e + "\n")
+        arquivotematicas.writelines(saida)
 
 
 
