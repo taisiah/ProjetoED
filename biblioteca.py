@@ -23,7 +23,7 @@ def login (login,senha):
 
 def cadastro_categoria ():
     print("\n=-=-=-=-=-= ADICIONAR CATEGORIA =-=-=-=-=-=\n")
-    arquivocategorias = open("arqcategorias.txt",'a')
+    arquivo_categorias = open("arqcategorias.txt",'a')
     categoria = input("Digite o nome da categoria que deseja cadastrar: ").upper()
     if categoria in categorias :
         print("Categoria existente")
@@ -34,12 +34,12 @@ def cadastro_categoria ():
         saida = []
         for e in categorias:
             saida.append(e+"\n")
-        arquivocategorias.writelines(saida)
+        arquivo_categorias.writelines(saida)
 
 
 def cadastro_tematica ():
     print("\n=-=-=-=-=-= ADICIONAR TEMÁTICA =-=-=-=-=-=\n")
-    arquivotematicas = open("arqtematicas.txt", 'a')
+    arquivo_tematicas = open("arqtematicas.txt", 'a')
     tematica = input("Digite o nome da temática que deseja cadastrar: ").upper()
     if tematica in tematicas :
         print("Temática existente")
@@ -50,7 +50,7 @@ def cadastro_tematica ():
         saida = []
         for e in tematicas:
             saida.append(e + "\n")
-        arquivotematicas.writelines(saida)
+        arquivo_tematicas.writelines(saida)
 
 
 
@@ -59,6 +59,7 @@ def cadastro_livro():
     global categorias
     
     print("\n=-=-=-=-=-= CADASTRAR NOVO LIVRO =-=-=-=-=-=\n")
+    arquivo_acervo= open("acervo.txt", 'a')
 
     livro = {
         'titulo':input("Título....: ").upper(),
@@ -84,6 +85,11 @@ def cadastro_livro():
     livro ['tematica'] = tematicas[posicao]
 
     lista_livros.append(livro)
+
+    saida = []
+    for e in lista_livros:
+        saida.append(e + "\n")
+    arquivo_acervo.writelines(saida)
 
     print("Livro cadastrado com sucesso!")
     
@@ -208,13 +214,46 @@ def repete_funcao(funcao):
         funcao()
         continua = input('Fazer novo cadastro [S/N]? ')
 
-'''
-def importa_dados():
+
+def importa_dados(import_arquivo):
+    importar = open(import_arquivo,"r")
+    print(importar.readlines())
+    
+
 
 def relatorios():
+    tipo_relatorio = input("Digite C para relatórios sobre categorias,T para temáticas e A para acervo")
+    if tipo_relatorio == "C" or "c":
+        arquivo_categorias = open("relatorio_categorias.txt","r")
+        #qtd por categorias / lista das categorias
+        print(arquivo_categorias.readlines())
+    if tipo_relatorio == "T" or "t":
+        arquivo_tematicas = open("relatorio_tematicas.txt","r")
+        print(arquivo_tematicas.readlines())
+        # qtd por categorias / lista das categorias
+    if tipo_relatorio == "a" or "A":
+        arquivo_acervo = open("relatorio_acervo.txt","r")
+        print(arquivo_acervo.readlines())
+        # qtd por categorias / lista das categorias
+    else:
+        print("Relatório não identificado")
+
+
 
 def status():
-'''
+    informacao_busca = input('Informe o TÍTULO do livro: ')
+    for i in range (0, len(lista_livros)):
+        if (lista_livros[i]['titulo']) == informacao_busca:
+            if {lista_livros[i]['reserva']}  == True :
+                print (f"\nTítulo....: {lista_livros[i]['titulo']}")
+                print (f"Categoria.: {lista_livros[i]['categoria']}")
+                print (f"Temática..: {lista_livros[i]['tematica']}")
+            else:
+                print("Data de devolução prevista",data)
+        else:
+            print("Título não encontrado!")
+
+
 
 def menu():
     print("\n=-=-=-=-=-=-=-= MENU PRINCIPAL =-=-=-=-=-=-=-=\n")
@@ -269,11 +308,12 @@ def main():
                 elif opcao == '7':
                     busca_livro()
                 elif opcao == '8':
-                    print("IMPORTAR")
+                    import_arquivo = input("Digite o arquivo que deseja importar")
+                    importa_dados(import_arquivo +".txt")
                 elif opcao == '9':
-                    print("RELATORIO")
+                    relatorios()
                 elif opcao == '10':
-                    print("STATUS DO LIVRO")                    
+                    status()
                 elif opcao == '11':
                     break
                 else:
