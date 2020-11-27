@@ -22,6 +22,8 @@ def login (login,senha):
     return None
 
 def cadastro_categoria ():
+    global categorias
+    global tematicas
     print("\n=-=-=-=-=-= ADICIONAR CATEGORIA =-=-=-=-=-=\n")
     arquivo_categorias = open("arqcategorias.txt",'w')
     categoria = input("Digite o nome da categoria que deseja cadastrar: ").upper()
@@ -53,7 +55,6 @@ def cadastro_tematica ():
         arquivo_tematicas.writelines(saida)
 
 
-
 def cadastro_livro():
     global tematicas
     global categorias
@@ -76,6 +77,7 @@ def cadastro_livro():
     for i in range (0, len(categorias)):
         print (f' [{i+1} - {categorias[i]}]')
     posicao = int(input('Informe o codigo da categoria do livro: '))-1
+    print(categorias)
     livro ['categoria'] = categorias[posicao]
 
     print(' Temáticas: ')
@@ -88,7 +90,7 @@ def cadastro_livro():
 
     saida = []
     for e in lista_livros:
-        saida.append(e + "\n")
+        saida.append(e['titulo'] +" " + e['autor'] + " "+ str(e['ano']) + " "+ e['editora'] + " " + e['edicao'] + " "+ str(e ['quantidade'])+" "+e['assunto']+" "+ str(e['reserva']) +"\n")
     arquivo_acervo.writelines(saida)
 
     print("Livro cadastrado com sucesso!")
@@ -218,6 +220,30 @@ def repete_funcao(funcao):
 def importa_dados(import_arquivo):
     importar = open(import_arquivo,"r")
     print(importar.readlines())
+
+def import_inicial():
+    global categorias
+    global tematicas
+    global lista_livros
+    importa_cat = open("arqcategorias.txt","r")
+    while True:
+        linha = importa_cat.readline()
+        if(linha == ""):
+            break
+        categorias.append(linha)
+    importa_tem = open("arqtematicas.txt", "r")
+    while True:
+        linha = importa_tem.readline()
+        if(linha == ""):
+            break
+        tematicas.append(linha)
+    importa_liv = open("acervo.txt", "r")
+    while True:
+        linha = importa_liv.readline()
+        if(linha == ""):
+            break
+        lista_livros.append(linha)
+    #importa_fun = open("listafunc.txt","r")
     
 
 
@@ -276,7 +302,7 @@ def menu():
 def main():
     print("\n=-=-=-=-=-= MORAIS LIBRARY - Sistema de Gestão Bibliotecária =-=-=-=-=-=\n")
     tentativas = 0
-    
+    import_inicial()
     while True:
         login_func = input("Digite seu login: ")
         senha_func = input("Digite sua senha: ")
