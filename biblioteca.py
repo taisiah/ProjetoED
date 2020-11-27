@@ -90,7 +90,7 @@ def cadastro_livro():
 
     saida = []
     for e in lista_livros:
-        saida.append(e['titulo'] +" " + e['autor'] + " "+ str(e['ano']) + " "+ e['editora'] + " " + e['edicao'] + " "+ str(e ['quantidade'])+" "+e['assunto']+" "+ str(e['reserva']) +"\n")
+        saida.append(e['titulo'] +" " + e['autor'] + " "+ str(e['ano']) + " "+ e['editora'] + " " + e['edicao'] + " "+ str(e ['quantidade'])+" "+e['assunto']+" "+ str(e['reserva']) + str(e['categoria']) + " "+ str(e['tematica'])+"\n")
     arquivo_acervo.writelines(saida)
 
     print("Livro cadastrado com sucesso!")
