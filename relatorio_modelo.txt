@@ -5,9 +5,3 @@
      |							|
      |		       - ACERVO REPORT -		|	
      |_______________________________________	|
-A quantidade do acervo atual é :24
-lista de títulos do acervo :
-ALGORITMOS
-ENGLISH GRAMMAR IN USE
-SIDARTA
-VADE MECUM

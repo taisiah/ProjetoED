@@ -265,34 +265,68 @@ def import_inicial():
 
 
 def relatorios():
+
+    global categorias
+    global tematicas
+    global lista_livros
+
     tipo_relatorio = input("Digite C para relatórios sobre categorias,T para temáticas e A para acervo")
     if tipo_relatorio == "C" or "c":
-        arquivo_categorias = open("relatorio_categorias.txt","r")
+        arquivo_categorias = open('relatorio_categorias.txt',"r")
         #qtd por categorias / lista das categorias
         print(arquivo_categorias.readlines())
+        arquivo_categorias.close()
     if tipo_relatorio == "T" or "t":
-        arquivo_tematicas = open("relatorio_tematicas.txt","r")
+        arquivo_tematicas = open('relatorio_tematicas.txt',"r")
+        print(categorias)
         print(arquivo_tematicas.readlines())
+        arquivo_tematicas.close()
         # qtd por categorias / lista das categorias
     if tipo_relatorio == "a" or "A":
-        arquivo_acervo = open("relatorio_acervo.txt","r")
-        print(arquivo_acervo.readlines())
-        # qtd por categorias / lista das categorias
+        arquivo_acervo = open('relatorio_acervo.txt',"w")
+        modelo = open('relatorio_modelo.txt','r')
+        leitura_modelo = modelo.readlines()
+        arquivo_acervo.writelines(leitura_modelo)
+        soma = 0
+        for livro in lista_livros:
+            qtd_acervo = livro['quantidade']
+            soma += qtd_acervo
+        arquivo_acervo.write("A quantidade do acervo atual é :")
+        arquivo_acervo.write(str(soma)+'\n')
+        lista_titulos = []
+        for livro in lista_livros:
+            titulo_livro = livro['titulo']
+            lista_titulos.append(titulo_livro)
+        lista_titulos.sort()
+        arquivo_acervo.write("lista de títulos do acervo :\n")
+        for i in range(len(lista_titulos)):
+            titulo = lista_titulos[i]
+            arquivo_acervo.write(str(titulo)+'\n')
+        arquivo_acervo.close()
+        impressao_acervo = open('relatorio_acervo.txt',"r")
+        print(impressao_acervo.readlines())
+        impressao_acervo.close()
     else:
         print("Relatório não identificado")
 
 
 
 def status():
+    global lista_livros
+    global categorias
+    global tematicas
+
     informacao_busca = input('Informe o TÍTULO do livro: ').upper()
+
     for i in range (0, len(lista_livros)):
         if (lista_livros[i]['titulo']) == informacao_busca:
             if {lista_livros[i]['reserva']}  == True :
                 print (f"\nTítulo....: {lista_livros[i]['titulo']}")
-                print (f"Categoria.: {lista_livros[i]['categoria']}")
+                print ("O Título buscado está no setor",f"Categoria.: {lista_livros[i]['categoria']}")
+                print("Título buscado está na estante ")
                 print (f"Temática..: {lista_livros[i]['tematica']}")
             else:
-                print("Data de devolução prevista:")
+                print(" Título encontras-se alugado. Data de devolução prevista...:")
         else:
             print("Título não encontrado!")
 
