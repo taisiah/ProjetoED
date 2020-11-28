@@ -33,11 +33,9 @@ def cadastro_categoria ():
         categorias.append(categoria)
         print("Categoria adicionada com sucesso!")
         categorias.sort()
-        saida = []
         for e in categorias:
-            saida.append(e+"\n")
-        arquivo_categorias.writelines(saida)
-
+            arquivo_categorias.write(e+"\n")
+    arquivo_categorias.close()
 
 def cadastro_tematica ():
     print("\n=-=-=-=-=-= ADICIONAR TEMÁTICA =-=-=-=-=-=\n")
@@ -49,27 +47,26 @@ def cadastro_tematica ():
         tematicas.append(tematica)
         print("Temática adicionada com sucesso!")
         tematicas.sort()
-        saida = []
         for e in tematicas:
-            saida.append(e + "\n")
-        arquivo_tematicas.writelines(saida)
-
+            arquivo_tematicas.write(e+"\n")
+    arquivo_tematicas.close()
 
 def cadastro_livro():
     global tematicas
     global categorias
-    
+    global lista_livros
+
     print("\n=-=-=-=-=-= CADASTRAR NOVO LIVRO =-=-=-=-=-=\n")
     arquivo_acervo= open("acervo.txt", 'w')
 
     livro = {
         'titulo':input("Título....: ").upper(),
-        'autor':input("Autor.....: "),
+        'autor':input("Autor.....: ").upper(),
         'ano':int(input("Ano.......: ")),
-        'editora':input("Editora...: "),
+        'editora':input("Editora...: ").upper(),
         'edicao':input("Edição....: "),
         'quantidade':int(input("Quantidade: ")),
-        'assunto':input("Assunto...: "),
+        'assunto':input("Assunto...: ").upper(),
         'reserva': False
     }
 
@@ -85,16 +82,21 @@ def cadastro_livro():
         print (f' [{i+1} - {tematicas[i]}]')
     posicao = int(input('Informe o codigo da temática do livro: '))-1
     livro ['tematica'] = tematicas[posicao]
-
     lista_livros.append(livro)
-
-    saida = []
     for e in lista_livros:
-        saida.append(e['titulo'] +" " + e['autor'] + " "+ str(e['ano']) + " "+ e['editora'] + " " + e['edicao'] + " "+ str(e ['quantidade'])+" "+e['assunto']+" "+ str(e['reserva']) + " "+str(e['categoria']) + " "+ str(e['tematica'])+"\n")
-    arquivo_acervo.writelines(saida)
+        arquivo_acervo.write(e['titulo']+"\n")
+        arquivo_acervo.write(e['autor'] + "\n")
+        arquivo_acervo.write(str(e['ano']) + "\n")
+        arquivo_acervo.write(e['editora'] + "\n")
+        arquivo_acervo.write(e['edicao'] + "\n")
+        arquivo_acervo.write(str(e ['quantidade'])+"\n")
+        arquivo_acervo.write(e['assunto']+"\n")
+        arquivo_acervo.write(str(e['reserva']) + "\n")
+        arquivo_acervo.write(str(e['categoria']) + "\n")
+        arquivo_acervo.write(str(e['tematica'])+"\n")
 
     print("Livro cadastrado com sucesso!")
-    
+    arquivo_acervo.close()
 
 def habilita_reserva(tituloLivro):
     global lista_livros
@@ -152,7 +154,7 @@ def busca_livro():
     filtro = int(input('[1] Título - [2] Autor - [3] Ano - [4] Assunto \nInforme o filtro a ser utilizado na busca: '))
     
     if filtro == 1:
-        informacao_busca = input('Informe o TÍTULO do livro: ')
+        informacao_busca = input('Informe o TÍTULO do livro: ').upper()
         for i in range (0, len(lista_livros)):
             if (lista_livros[i]['titulo']) == informacao_busca:
                 print (f"\nTítulo....: {lista_livros[i]['titulo']}")
@@ -166,7 +168,7 @@ def busca_livro():
                 
 
     elif filtro == 2:
-        informacao_busca = input('Informe o AUTOR do livro: ')
+        informacao_busca = input('Informe o AUTOR do livro: ').upper()
         for i in range (0, len(lista_livros)):
             if (lista_livros[i]['autor']) == informacao_busca:
                 print (f"\nTítulo....: {lista_livros[i]['titulo']}")
@@ -180,7 +182,7 @@ def busca_livro():
                 
 
     elif filtro == 3:
-        informacao_busca = input('Informe o ANO do livro: ')
+        informacao_busca = input('Informe o ANO do livro: ').upper()
         for i in range (0, len(lista_livros)):
             if (lista_livros[i]['ano']) == informacao_busca:
                 print (f"\nTítulo....: {lista_livros[i]['titulo']}")
@@ -194,7 +196,7 @@ def busca_livro():
                 
 
     elif filtro == 4:
-        informacao_busca = input('Informe o ASSUNTO do livro: ')
+        informacao_busca = input('Informe o ASSUNTO do livro: ').upper()
         for i in range (0, len(lista_livros)):
             if (lista_livros[i]['assunto']) == informacao_busca:
                 print (f"\nTítulo....: {lista_livros[i]['titulo']}")
@@ -230,19 +232,34 @@ def import_inicial():
         linha = importa_cat.readline()
         if(linha == ""):
             break
-        categorias.append(linha[0:len(linha)-1])
+        categorias.append(linha[0:-1])
     importa_tem = open("arqtematicas.txt", "r")
     while True:
         linha = importa_tem.readline()
         if(linha == ""):
             break
-        tematicas.append(linha[0:len(linha)-1])
+        tematicas.append(linha[0:-1])
     importa_liv = open("acervo.txt", "r")
     while True:
-        linha = importa_liv.readline()
+        linha = importa_liv.readline()[0:-1]
         if(linha == ""):
             break
-        lista_livros.append(linha[0:len(linha)-1])
+        livro = {
+            'titulo':linha,
+            'autor': importa_liv.readline()[0:-1],
+            'ano': int(importa_liv.readline()[0:-1]),
+            'editora': importa_liv.readline()[0:-1],
+            'edicao': importa_liv.readline()[0:-1],
+            'quantidade':int(importa_liv.readline()[0:-1]),
+            'assunto':importa_liv.readline()[0:-1] ,
+            'reserva': bool(importa_liv.readline()[0:-1]),
+            'categoria':importa_liv.readline()[0:-1],
+            'tematica':importa_liv.readline()[0:-1]
+        }
+        lista_livros.append(livro)
+    importa_liv.close()
+    importa_tem.close()
+    importa_cat.close()
     #importa_fun = open("listafunc.txt","r")
     
 
@@ -267,7 +284,7 @@ def relatorios():
 
 
 def status():
-    informacao_busca = input('Informe o TÍTULO do livro: ')
+    informacao_busca = input('Informe o TÍTULO do livro: ').upper()
     for i in range (0, len(lista_livros)):
         if (lista_livros[i]['titulo']) == informacao_busca:
             if {lista_livros[i]['reserva']}  == True :
