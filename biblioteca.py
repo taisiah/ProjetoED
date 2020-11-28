@@ -90,7 +90,7 @@ def cadastro_livro():
 
     saida = []
     for e in lista_livros:
-        saida.append(e['titulo'] +" " + e['autor'] + " "+ str(e['ano']) + " "+ e['editora'] + " " + e['edicao'] + " "+ str(e ['quantidade'])+" "+e['assunto']+" "+ str(e['reserva']) + str(e['categoria']) + " "+ str(e['tematica'])+"\n")
+        saida.append(e['titulo'] +" " + e['autor'] + " "+ str(e['ano']) + " "+ e['editora'] + " " + e['edicao'] + " "+ str(e ['quantidade'])+" "+e['assunto']+" "+ str(e['reserva']) + " "+str(e['categoria']) + " "+ str(e['tematica'])+"\n")
     arquivo_acervo.writelines(saida)
 
     print("Livro cadastrado com sucesso!")
@@ -230,19 +230,19 @@ def import_inicial():
         linha = importa_cat.readline()
         if(linha == ""):
             break
-        categorias.append(linha)
+        categorias.append(linha[0:len(linha)-1])
     importa_tem = open("arqtematicas.txt", "r")
     while True:
         linha = importa_tem.readline()
         if(linha == ""):
             break
-        tematicas.append(linha)
+        tematicas.append(linha[0:len(linha)-1])
     importa_liv = open("acervo.txt", "r")
     while True:
         linha = importa_liv.readline()
         if(linha == ""):
             break
-        lista_livros.append(linha)
+        lista_livros.append(linha[0:len(linha)-1])
     #importa_fun = open("listafunc.txt","r")
     
 
@@ -275,7 +275,7 @@ def status():
                 print (f"Categoria.: {lista_livros[i]['categoria']}")
                 print (f"Temática..: {lista_livros[i]['tematica']}")
             else:
-                print("Data de devolução prevista",data)
+                print("Data de devolução prevista:")
         else:
             print("Título não encontrado!")
 
