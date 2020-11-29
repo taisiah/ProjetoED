@@ -67,7 +67,8 @@ def cadastro_livro():
         'edicao':input("Edição....: "),
         'quantidade':int(input("Quantidade: ")),
         'assunto':input("Assunto...: ").upper(),
-        'reserva': False
+        'reserva': False,
+        'status': False
     }
 
     print(' Categorias: ')
@@ -94,6 +95,7 @@ def cadastro_livro():
         arquivo_acervo.write(str(e['reserva']) + "\n")
         arquivo_acervo.write(str(e['categoria']) + "\n")
         arquivo_acervo.write(str(e['tematica'])+"\n")
+        arquivo_acervo.write(str(e['status']) + "\n")
 
     print("Livro cadastrado com sucesso!")
     arquivo_acervo.close()
@@ -108,13 +110,31 @@ def habilita_reserva(tituloLivro):
     for i in range (0, len(lista_livros)):
         if (lista_livros[i]['titulo']) == tituloLivro:
             if reservar in 'Ss':
-                lista_livros[i]['status'] = True
+                lista_livros[i]['reserva'] = True
+                print(lista_livros[i])
                 print(f"Informação atualizada! Livro {tituloLivro} disponível para reserva.")
             else:
-                lista_livros[i]['status'] = False
+                lista_livros[i]['reserva'] = False
                 print(f"Informação atualizada! Livro {tituloLivro} indisponível para reserva.")
             break
-   
+
+'''def aluguel_unidades(titulolivro):
+    global lista_livros
+    alugado = 0
+    for i in range (0, len(lista_livros)):
+        if (lista_livros[i]['titulo']) == tituloLivro:
+            qtd = lista_livros[i]['quantidade']
+        else:
+            print("Título não encontrado")
+    for i in range(qtd):
+        alugado += 1
+    if qtd == alugado :
+        lista_livros[i]['status']= False'''
+            
+
+
+
+
 
 def ajusta_acervo(tituloLivro):
     global lista_livros
@@ -165,6 +185,7 @@ def busca_livro():
                 print (f"Categoria.: {lista_livros[i]['categoria']}")
                 print (f"Temática..: {lista_livros[i]['tematica']}")
                 print (f"Reserva...: {lista_livros[i]['reserva']}")
+                print(f"Status.....: {lista_livros[i]['status']}")
                 
 
     elif filtro == 2:
@@ -179,6 +200,7 @@ def busca_livro():
                 print (f"Categoria.: {lista_livros[i]['categoria']}")
                 print (f"Temática..: {lista_livros[i]['tematica']}")
                 print (f"Reserva...: {lista_livros[i]['reserva']}")
+                print(f"Status.....: {lista_livros[i]['status']}")
                 
 
     elif filtro == 3:
@@ -193,6 +215,7 @@ def busca_livro():
                 print (f"Categoria.: {lista_livros[i]['categoria']}")
                 print (f"Temática..: {lista_livros[i]['tematica']}")
                 print (f"Reserva...: {lista_livros[i]['reserva']}")
+                print(f"Status.....: {lista_livros[i]['status']}")
                 
 
     elif filtro == 4:
@@ -207,6 +230,7 @@ def busca_livro():
                 print (f"Categoria.: {lista_livros[i]['categoria']}")
                 print (f"Temática..: {lista_livros[i]['tematica']}")
                 print (f"Reserva...: {lista_livros[i]['reserva']}")
+                print(f"Status.....: {lista_livros[i]['status']}")
                 
     else:
         print('Opção Inválida!')
@@ -254,7 +278,9 @@ def import_inicial():
             'assunto':importa_liv.readline()[0:-1] ,
             'reserva': bool(importa_liv.readline()[0:-1]),
             'categoria':importa_liv.readline()[0:-1],
-            'tematica':importa_liv.readline()[0:-1]
+            'tematica':importa_liv.readline()[0:-1],
+            'status': bool(importa_liv.readline()[0:-1])
+
         }
         lista_livros.append(livro)
     importa_liv.close()
@@ -270,18 +296,26 @@ def relatorios():
     global tematicas
     global lista_livros
 
-    tipo_relatorio = input("Digite C para relatórios sobre categorias,T para temáticas e A para acervo")
-    if tipo_relatorio == "C" or "c":
-        arquivo_categorias = open('relatorio_categorias.txt',"r")
-        #qtd por categorias / lista das categorias
-        print(arquivo_categorias.readlines())
+    tipo_relatorio = input("Digite C para relatórios sobre categorias,T para temáticas e A para acervo: ")
+
+    '''if tipo_relatorio == "C" or "c":
+        arquivo_categorias = open('relatorio_categorias.txt',"w")
+        modelo_cat = open('relatorio_modelo_cat.txt', 'r')
+        leitura_modelo_cat=modelo_cat.readlines()
+        arquivo_categorias.writelines(leitura_modelo_cat)
+        lista_cat=[]
+        arquivo_categorias.write("lista de categorias do acervo :\n")
+        for i in categorias:
+            arquivo_categorias.write(i,categorias[i])
         arquivo_categorias.close()
+        impressao_categorias = open('relatorio_modelo_cat.txt', "r")
+        print(impressao_categorias.readlines())
+        impressao_categorias.close()
     if tipo_relatorio == "T" or "t":
         arquivo_tematicas = open('relatorio_tematicas.txt',"r")
-        print(categorias)
         print(arquivo_tematicas.readlines())
         arquivo_tematicas.close()
-        # qtd por categorias / lista das categorias
+        # qtd por categorias / lista das categorias'''
     if tipo_relatorio == "a" or "A":
         arquivo_acervo = open('relatorio_acervo.txt',"w")
         modelo = open('relatorio_modelo.txt','r')
@@ -311,24 +345,33 @@ def relatorios():
 
 
 
-def status():
+def status(titulo_status):
     global lista_livros
     global categorias
     global tematicas
-
-    informacao_busca = input('Informe o TÍTULO do livro: ').upper()
-
-    for i in range (0, len(lista_livros)):
-        if (lista_livros[i]['titulo']) == informacao_busca:
-            if {lista_livros[i]['reserva']}  == True :
+    status_livro = False
+    encontrado = False
+    for i in range (0, len(lista_livros)) :
+        if (lista_livros[i]['titulo']) == titulo_status :
+            if lista_livros[i]['reserva'] == True:
+                status_livro = True
+                posicao = i
+                break
+            encontrado=True
+    if encontrado == False :
+        print("Título não encontrado!")
+    else:
+        if status_livro == True:
+            if lista_livros[posicao]['status'] == True :
                 print (f"\nTítulo....: {lista_livros[i]['titulo']}")
                 print ("O Título buscado está no setor",f"Categoria.: {lista_livros[i]['categoria']}")
-                print("Título buscado está na estante ")
-                print (f"Temática..: {lista_livros[i]['tematica']}")
+                print("Título buscado está na estante ",lista_livros[i]['tematica'])
+                print( lista_livros[i]['quantidade'],"unidade(s) disponível(s)")
+
             else:
-                print(" Título encontras-se alugado. Data de devolução prevista...:")
-        else:
-            print("Título não encontrado!")
+                print("Título encontra-se alugado. Data de devolução prevista...:")
+        else: print("Título não está disponível para reserva")
+
 
 
 
@@ -390,7 +433,7 @@ def main():
                 elif opcao == '9':
                     relatorios()
                 elif opcao == '10':
-                    status()
+                    status(input('Titulo do livro que deseja obter status ').upper())
                 elif opcao == '11':
                     break
                 else:
