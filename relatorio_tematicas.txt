@@ -1,0 +1,34 @@
+     ----------------------------------------------------
+     |							|	            
+     |			MORAIS LIBRARY		 	|
+     |---------------------------------------------------	|
+     |							|
+     |		       - THEMATIC REPORT -		|	
+     |_______________________________________	|
+          1.ANATOMIA
+          2.ARQUITETURA 
+          3.ARTES
+          4.BIOLOGIA
+          5.COMPUTAÇÃO 
+          6.DESIGN 
+          7.DIREITO 
+          8.ECONOMIA
+          9.ENGENHARIA
+          10.FRANCÊS
+          11.FÍSICA
+          12.GASTRONOMIA
+          13.GEOGRAFIA
+          14.GRAMÁTICA
+          15.HISTÓRIA
+          16.LINGUA INGLESA
+          17.LITERATURA 
+          18.LÍNGUA ESPANHOLA
+          19.MATEMÁTICA
+          20.MECÂNICA
+          21.PEDAGOGIA
+          22.PORTUGUÊS
+          23.PSICOLOGIA
+          24.QUIMICA
+          25.REDES
+          26.SOCIOLOGIA
+A quantidade de temáticas cadastradas é: 26           Relatório gerado em : 2020-11-29
