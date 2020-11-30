@@ -2,8 +2,33 @@
      ------------------------------------------------------------------------------
      |             MORAIS LIBRARY - Sistema de Gestão Bibliotecária                        |
      ------------------------------------------------------------------------------
-                           »» RELATÓRIO DE CATEGORIAS DO ACERVO ««
-TESTE
-TESTE2
-TESTE3
+                           »» RELATÓRIO DE TEMÁTICAS DO ACERVO ««
+ANATOMIA
+ARQUITETURA 
+ARTES
+BIOLOGIA
+COMPUTAÇÃO 
+DESIGN 
+DIREITO 
+ECONOMIA
+ENGENHARIA
+FRANCÊS
+FÍSICA
+GASTRONOMIA
+GEOGRAFIA
+GRAMÁTICA
+HERMANN
+HISTÓRIA
+LINGUA INGLESA
+LITERATURA 
+LÍNGUA ESPANHOLA
+MATEMÁTICA
+MECÂNICA
+PEDAGOGIA
+PORTUGUÊS
+PSICOLOGIA
+QUIMICA
+REDES
+SOCIOLOGIA
+
            Relatório gerado em : 2020-11-30

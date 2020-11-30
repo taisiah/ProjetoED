@@ -351,16 +351,10 @@ def import_inicial():
     importa_cat.close()
     #importa_fun = open("listafunc.txt","r")
 
-def cabecalho_relatorio (arq, titulo):
-    arquivo = open(arq,"w", encoding="utf-8")
-    arquivo.write("     ╔════════════════════════════════════════════════════════════════════════════╗\n")
-    arquivo.write("     ║             MORAIS LIBRARY - Sistema de Gestão Bibliotecária               ║\n")
-    arquivo.write("     ╚════════════════════════════════════════════════════════════════════════════╝\n")
-    arquivo.write("                           RELATÓRIO DE "+titulo.upper()+"\n")   
-    arquivo.close()              
+
 
 def cabecalho_sistema():
-    print("     ╔════════════════════════════════════════════════════════════════════════════╗")
+    print("\n     ╔════════════════════════════════════════════════════════════════════════════╗")
     print("     ║             MORAIS LIBRARY - Sistema de Gestão Bibliotecária               ║")
     print("     ╚════════════════════════════════════════════════════════════════════════════╝\n")
 
@@ -438,11 +432,11 @@ def relatorios():
         leitura_modelo = modelo.readlines()
         arquivo_tematicas.writelines(leitura_modelo)
         arquivo_tematicas.write("                           »» RELATÓRIO DE TEMÁTICAS DO ACERVO ««\n")
-        for i in range(0, len(categorias)):
-            arquivo_tematicas.write(str(categorias[i]) + "\n")
+        for i in range(0, len(tematicas)):
+            arquivo_tematicas.write(str(tematicas[i]) + "\n")
         arquivo_tematicas.write("           Relatório gerado em : " + str(data_atual))
         arquivo_tematicas.close()
-
+        print("\n                :: Relatório gerado com sucesso! ::")
     
     else: 
         print("\n                :: Relatório inexistente ::")
