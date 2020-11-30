@@ -27,7 +27,7 @@ RIDEEL
 30
 6
 DIREITO 
-True
+False
 LIVROS
 DIREITO 
 True
@@ -49,7 +49,7 @@ EDTESTE
 12
 12
 ASSUNTO
-False
+True
 TESTE
 PSICOLOGIA
-False
+True
