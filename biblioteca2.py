@@ -430,11 +430,17 @@ def relatorios():
         #print(impressao_categorias.readlines())
         #impressao_categorias.close()
     
-    #elif tipo_relatorio == 3:
-    #    arquivo_tematicas = open('relatorio_tematicas.txt',"r")
-    #    print(arquivo_tematicas.readlines())
-    #    arquivo_tematicas.close()
-        # qtd por categorias / lista das categorias'''
+    elif tipo_relatorio == 3:
+        arquivo_tematicas = open('relatorio_tematicas.txt',"w")
+        modelo = open('relatorio_modelo.txt', 'r')
+        leitura_modelo = modelo.readlines()
+        arquivo_tematicas.writelines(leitura_modelo)
+        arquivo_tematicas.write("                           »» RELATÓRIO DE TEMÁTICAS DO ACERVO ««\n")
+        for i in range(0, len(categorias)):
+            arquivo_tematicas.write(str(categorias[i]) + "\n")
+        arquivo_tematicas.write("           Relatório gerado em : " + str(data_atual))
+        arquivo_tematicas.close()
+
     
     else: 
         print("\n                :: Relatório inexistente ::")
@@ -448,6 +454,7 @@ def status(titulo_status):
     encontrado = False
     for i in range (0, len(lista_livros)) :
         if (lista_livros[i]['titulo']) == titulo_status :
+            encontrado = True
             if lista_livros[i]['reserva'] == True:
                 status_livro = True
                 posicao = i
