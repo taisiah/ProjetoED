@@ -2,8 +2,6 @@
 1 - Separe funções e definições de classe com duas linhas em branco
 2 - identificadores de variaveis: "minúsculas_separadas_com_underscore"
 3 - nomes de funções: PalavrasComeçandoPorMaiúscula'''
-from datetime import date
-data_atual = date.today()
 
 #funcionário => nome, login, senha, e-mail
 lista_funcionarios = []
@@ -17,6 +15,8 @@ tematicas = []
 lista_livros = []
 
 import os
+import os
+print(os.getcwd())
 
 def login (login,senha):
     for f in lista_funcionarios:
@@ -35,7 +35,7 @@ def cadastro_categoria ():
     print("     │                     =-=-= CADASTRAR CATEGORIA =-=-=                        │")
     print("     └────────────────────────────────────────────────────────────────────────────┘")
           
-    arquivo_categorias = open("arqcategorias.txt",'w')
+    arquivo_categorias = open("TESTE.txt.txt","w")
     categoria = input("\n         » Digite o nome da categoria que deseja cadastrar: ").upper()
     if categoria in categorias :
         print("\n                    :: Categoria existente ::")
@@ -57,7 +57,7 @@ def cadastro_tematica ():
     print("     │                     =-=-= CADASTRAR TEMÁTICA =-=-=                         │")
     print("     └────────────────────────────────────────────────────────────────────────────┘")
 
-    arquivo_tematicas = open("arqtematicas.txt", 'w')
+    arquivo_tematicas = open("arqtematicas.txt", "w")
     tematica = input("\n        » Digite o nome da temática que deseja cadastrar: ").upper()
     if tematica in tematicas :
         print("\n                    :: Temática existente ::")
@@ -69,22 +69,6 @@ def cadastro_tematica ():
             arquivo_tematicas.write(e+"\n")
     arquivo_tematicas.close()
 
-def update_acervo_arquivo():
-    global lista_livros
-    arquivo_acervo= open("acervo.txt", 'w')
-    for e in lista_livros:
-        arquivo_acervo.write(e['titulo']+"\n")
-        arquivo_acervo.write(e['autor'] + "\n")
-        arquivo_acervo.write(str(e['ano']) + "\n")
-        arquivo_acervo.write(e['editora'] + "\n")
-        arquivo_acervo.write(e['edicao'] + "\n")
-        arquivo_acervo.write(str(e ['quantidade'])+"\n")
-        arquivo_acervo.write(e['assunto']+"\n")
-        arquivo_acervo.write(str(e['reserva']) + "\n")
-        arquivo_acervo.write(str(e['categoria']) + "\n")
-        arquivo_acervo.write(str(e['tematica'])+"\n")
-        arquivo_acervo.write(str(e['status']) + "\n")
-    arquivo_acervo.close()
 
 def cadastro_livro():
     global tematicas
@@ -96,6 +80,8 @@ def cadastro_livro():
     print("     ┌────────────────────────────────────────────────────────────────────────────┐")
     print("     │                       =-=-= CADASTRAR LIVRO =-=-=                          │")
     print("     └────────────────────────────────────────────────────────────────────────────┘\n")
+    
+    arquivo_acervo= open("acervo.txt", "w")
 
     livro = {
         'titulo':input("                      » Título....: ").upper(),
@@ -111,21 +97,32 @@ def cadastro_livro():
     print("     ├────────────────────────────── CATEGORIAS ──────────────────────────────────┤\n")
     
     for i in range (0, len(categorias)):
-        print (f'                      [{i+1} - {categorias[i]}]')
+        print (f'                      [{i+1}] - {categorias[i]}')
     posicao = int(input('\n                      » Informe o codigo da categoria do livro: '))-1
     livro ['categoria'] = categorias[posicao]
 
 
     print("     ├────────────────────────────── TEMÁTICAS ───────────────────────────────────┤\n")
     for i in range (0, len(tematicas)):
-        print (f'                      [{i+1} - {tematicas[i]}]')
+        print (f'                      [{i+1}] - {tematicas[i]}')
     posicao = int(input('                      » Informe o codigo da temática do livro: '))-1
     livro ['tematica'] = tematicas[posicao]
     lista_livros.append(livro)
-
-    update_acervo_arquivo()
+    for e in lista_livros:
+        arquivo_acervo.write(e['titulo']+"\n")
+        arquivo_acervo.write(e['autor'] + "\n")
+        arquivo_acervo.write(str(e['ano']) + "\n")
+        arquivo_acervo.write(e['editora'] + "\n")
+        arquivo_acervo.write(e['edicao'] + "\n")
+        arquivo_acervo.write(str(e ['quantidade'])+"\n")
+        arquivo_acervo.write(e['assunto']+"\n")
+        arquivo_acervo.write(str(e['reserva']) + "\n")
+        arquivo_acervo.write(str(e['categoria']) + "\n")
+        arquivo_acervo.write(str(e['tematica'])+"\n")
+        arquivo_acervo.write(str(e['status']) + "\n")
 
     print("\n                      :: Livro cadastrado com sucesso! ::")
+    arquivo_acervo.close()
 
 
 def habilita_reserva():
@@ -146,7 +143,6 @@ def habilita_reserva():
         if (lista_livros[i]['titulo']) == tituloLivro:
             if reservar in 'Ss':
                 lista_livros[i]['reserva'] = True
-                lista_livros[i]['status'] = True
                 print(lista_livros[i])
                 print(f"\n               :: Informação atualizada! Livro {tituloLivro} disponível para reserva. ::")
             else:
@@ -154,7 +150,6 @@ def habilita_reserva():
                 print(f"\n               :: Informação atualizada! Livro {tituloLivro} indisponível para reserva. ::")
             break
     print('\n                      :: Livro não localizado! ::')
-    update_acervo_arquivo()
 
 '''def aluguel_unidades(titulolivro):
     global lista_livros
@@ -192,8 +187,7 @@ def ajusta_acervo(tituloLivro):
             print(f'\n                      :: A nova quantidade de acervo do livro {lista_livros[i]["titulo"]} é {lista_livros[i]["quantidade"]} un ::') 
             break
     
-    print('\n                      :: Livro não localizado! ::')
-    update_acervo_arquivo()
+    print('\n                      :: Livro não localizado! ::') 
 
     
 
@@ -214,7 +208,6 @@ def remove_livro(tituloLivro):
             break
 
     print(f"\n                      :: Livro {tituloLivro} removido com sucesso! ::")
-    update_acervo_arquivo()
 
 
 def busca_livro():
@@ -310,7 +303,7 @@ def import_inicial():
     global categorias
     global tematicas
     global lista_livros
-
+    
     importa_cat = open("arqcategorias.txt", "r")
     while True:
         linha = importa_cat.readline()
@@ -378,8 +371,8 @@ def relatorios():
     
     if tipo_relatorio == 1:
         
-        arquivo_acervo = open('relatorio_acervo.txt',"w")
-        modelo = open('relatorio_modelo.txt', 'r', encoding="utf-8")
+        arquivo_acervo = open("relatorio_acervo.txt","w")
+        modelo = open("relatorio_modelo.txt", "r", encoding="utf-8")
         leitura_modelo=modelo.readlines()
         arquivo_acervo.writelines(leitura_modelo)
         
@@ -406,25 +399,30 @@ def relatorios():
             somaestoque += qtd_acervo
         arquivo_acervo.write("                          Total de volumes em estoque:")
         arquivo_acervo.write(str(somaestoque)+'\n')
-        arquivo_acervo.write("                          Relatório gerado em : " + str(data_atual))
         
         arquivo_acervo.close()
         
         print("\n                :: Relatório gerado com sucesso! ::")
         
-
+        #impressao_acervo = open('relatorio_acervo.txt',"r")
+        #print(impressao_acervo.readlines())
+        #impressao_acervo.close()
     
     elif tipo_relatorio == 2:
         
-        arquivo_categorias = open('relatorio_categorias2.txt',"w")
-        modelo = open('relatorio_modelo.txt', 'r')#, encoding="utf-8")
+        arquivo_categorias = open("relatorio_categorias2.txt","w")
+        modelo = open("relatorio_modelo.txt", "r", encoding="utf-8")
         leitura_modelo=modelo.readlines()
         arquivo_categorias.writelines(leitura_modelo)
         arquivo_categorias.write("                           »» RELATÓRIO DE CATEGORIAS DO ACERVO ««\n")
-        for i in range(0,len(categorias)):
-            arquivo_categorias.write(str(categorias[i])+"\n")
-        arquivo_categorias.write("           Relatório gerado em : " + str(data_atual))
+        for i in categorias:
+            arquivo_categorias.write(categorias[i]+"\n")
         arquivo_categorias.close()
+        import shutil
+        shutil.copy("relatorio_categorias2.txt", "prn")
+        #impressao_categorias = open('relatorio_modelo.txt', "r")
+        #print(impressao_categorias.readlines())
+        #impressao_categorias.close()
     
     elif tipo_relatorio == 3:
         arquivo_tematicas = open('relatorio_tematicas.txt',"w")
@@ -455,7 +453,7 @@ def status(titulo_status):
                 status_livro = True
                 posicao = i
                 break
-
+            encontrado=True
     if encontrado == False :
         print("Título não encontrado!")
     else:
