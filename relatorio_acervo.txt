@@ -1,13 +1,13 @@
-     ----------------------------------------------------
-     |							|	            
-     |			MORAIS LIBRARY		 	|
-     |---------------------------------------------------	|
-     |							|
-     |		       - ACERVO REPORT -		|	
-     |_______________________________________	|
-A quantidade do acervo atual é :24
-lista de títulos do acervo :
-ALGORITMOS
-ENGLISH GRAMMAR IN USE
-SIDARTA
-VADE MECUM
+     
+     ------------------------------------------------------------------------------
+     |             MORAIS LIBRARY - Sistema de Gestão Bibliotecária               |
+     ------------------------------------------------------------------------------
+
+                           »» Lista de Títulos do Acervo :
+                      - ALGORITMOS
+                      - ENGLISH GRAMMAR IN USE
+                      - SIDARTA
+                      - TESTELIVRO
+                      - VADE MECUM
+                      Total de títulos :5
+                          Total de volumes em estoque:36
