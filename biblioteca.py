@@ -3,6 +3,9 @@
 2 - identificadores de variaveis: "minúsculas_separadas_com_underscore"
 3 - nomes de funções: PalavrasComeçandoPorMaiúscula'''
 
+from datetime import date
+data_atual = date.today()
+
 #funcionário => nome, login, senha, e-mail
 lista_funcionarios = []
 funcionario = ['Administrador','admin','123','admin@iesp.com']
@@ -111,6 +114,7 @@ def habilita_reserva(tituloLivro):
         if (lista_livros[i]['titulo']) == tituloLivro:
             if reservar in 'Ss':
                 lista_livros[i]['reserva'] = True
+                lista_livros[i]['status'] = True
                 print(lista_livros[i])
                 print(f"Informação atualizada! Livro {tituloLivro} disponível para reserva.")
             else:
@@ -295,27 +299,40 @@ def relatorios():
     global categorias
     global tematicas
     global lista_livros
+    global data_atual
+
 
     tipo_relatorio = input("Digite C para relatórios sobre categorias,T para temáticas e A para acervo: ")
 
-    '''if tipo_relatorio == "C" or "c":
+    if tipo_relatorio == "C" or "c":
         arquivo_categorias = open('relatorio_categorias.txt',"w")
         modelo_cat = open('relatorio_modelo_cat.txt', 'r')
         leitura_modelo_cat=modelo_cat.readlines()
         arquivo_categorias.writelines(leitura_modelo_cat)
-        lista_cat=[]
-        arquivo_categorias.write("lista de categorias do acervo :\n")
-        for i in categorias:
-            arquivo_categorias.write(i,categorias[i])
+        arquivo_categorias.write("          lista de categorias do acervo :\n")
+        for i in range(0,len(categorias)):
+            quantidade = i + 1
+            arquivo_categorias.write("          "+ str(i + 1) + "."+ str(categorias[i] +'\n'))
+        arquivo_categorias.write("           A quantidade de temáticas cadastradas é: " + str(quantidade)+"\n")
+        arquivo_categorias.write("           Relatório gerado em : " + str(data_atual))
         arquivo_categorias.close()
         impressao_categorias = open('relatorio_modelo_cat.txt', "r")
         print(impressao_categorias.readlines())
         impressao_categorias.close()
     if tipo_relatorio == "T" or "t":
-        arquivo_tematicas = open('relatorio_tematicas.txt',"r")
-        print(arquivo_tematicas.readlines())
+        arquivo_tematicas = open('relatorio_tematicas.txt',"w")
+        modelo_tem = open('relatorio_modelo_tem.txt','r')
+        leitura_modelo_tem = modelo_tem.readlines()
+        arquivo_tematicas.writelines(leitura_modelo_tem)
+        for i in range (0,len(tematicas)):
+            quantidade = i + 1
+            arquivo_tematicas.write("          "+ str(i + 1) + "."+ str(tematicas[i] +'\n'))
+        arquivo_tematicas.write("A quantidade de temáticas cadastradas é: " + str(quantidade))
+        arquivo_tematicas.write("           Relatório gerado em : " + str(data_atual))
         arquivo_tematicas.close()
-        # qtd por categorias / lista das categorias'''
+        impressao_tematica = open('relatorio_tematicas.txt','r')
+        print(impressao_tematica.readlines())
+        impressao_tematica.close()
     if tipo_relatorio == "a" or "A":
         arquivo_acervo = open('relatorio_acervo.txt',"w")
         modelo = open('relatorio_modelo.txt','r')
@@ -325,17 +342,18 @@ def relatorios():
         for livro in lista_livros:
             qtd_acervo = livro['quantidade']
             soma += qtd_acervo
-        arquivo_acervo.write("A quantidade do acervo atual é :")
-        arquivo_acervo.write(str(soma)+'\n')
+        arquivo_acervo.write("           A quantidade do acervo atual é :")
+        arquivo_acervo.write(str(soma)+"unidades"+'\n')
         lista_titulos = []
         for livro in lista_livros:
             titulo_livro = livro['titulo']
             lista_titulos.append(titulo_livro)
         lista_titulos.sort()
-        arquivo_acervo.write("lista de títulos do acervo :\n")
+        arquivo_acervo.write("          lista de títulos do acervo :\n")
         for i in range(len(lista_titulos)):
             titulo = lista_titulos[i]
-            arquivo_acervo.write(str(titulo)+'\n')
+            arquivo_acervo.write("          "+str(titulo)+'\n')
+        arquivo_acervo.write("           Relatório gerado em : " + str(data_atual))
         arquivo_acervo.close()
         impressao_acervo = open('relatorio_acervo.txt',"r")
         print(impressao_acervo.readlines())
@@ -356,8 +374,9 @@ def status(titulo_status):
             if lista_livros[i]['reserva'] == True:
                 status_livro = True
                 posicao = i
+                encontrado = True
                 break
-            encontrado=True
+
     if encontrado == False :
         print("Título não encontrado!")
     else:

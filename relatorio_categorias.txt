@@ -5,8 +5,12 @@
      |							|
      |		       - CATEGORY REPORT -		|	
      |_______________________________________	|
-lista de categorias do acervo :
-LIVROS
-LIVROS
-LIVROS
-LIVROS
+          lista de categorias do acervo :
+          1.CATÁLOGOS
+          2.FOLHETOS
+          3.LIVROS
+          4.MONOGRAFIAS
+          5.PERIÓDICOS
+          6.TESE
+           A quantidade de temáticas cadastradas é: 6
+           Relatório gerado em : 2020-11-29
