@@ -1,3 +1,18 @@
+<<<<<<< HEAD
+     
+     ------------------------------------------------------------------------------
+     |             MORAIS LIBRARY - Sistema de Gestão Bibliotecária               |
+     ------------------------------------------------------------------------------
+
+                           »» Lista de Títulos do Acervo :
+                      - ALGORITMOS
+                      - ENGLISH GRAMMAR IN USE
+                      - SIDARTA
+                      - TESTELIVRO
+                      - VADE MECUM
+                      Total de títulos :5
+                          Total de volumes em estoque:36
+=======
      ----------------------------------------------------
      |							|	            
      |			MORAIS LIBRARY		 	|
@@ -12,3 +27,4 @@
           SIDARTA
           VADE MECUM
            Relatório gerado em : 2020-11-29
+>>>>>>> 5c43aeae99aaeca414808fb47030b4f15bdc119e
