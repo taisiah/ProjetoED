@@ -2,6 +2,8 @@
 1 - Separe funções e definições de classe com duas linhas em branco
 2 - identificadores de variaveis: "minúsculas_separadas_com_underscore"
 3 - nomes de funções: PalavrasComeçandoPorMaiúscula'''
+from datetime import date
+data_atual = date.today()
 
 #funcionário => nome, login, senha, e-mail
 lista_funcionarios = []
@@ -141,6 +143,7 @@ def habilita_reserva():
         if (lista_livros[i]['titulo']) == tituloLivro:
             if reservar in 'Ss':
                 lista_livros[i]['reserva'] = True
+                lista_livros[i]['status'] = True
                 print(lista_livros[i])
                 print(f"\n               :: Informação atualizada! Livro {tituloLivro} disponível para reserva. ::")
             else:
@@ -403,6 +406,7 @@ def relatorios():
             somaestoque += qtd_acervo
         arquivo_acervo.write("                          Total de volumes em estoque:")
         arquivo_acervo.write(str(somaestoque)+'\n')
+        arquivo_acervo.write("                          Relatório gerado em : " + str(data_atual))
         
         arquivo_acervo.close()
         
@@ -419,13 +423,15 @@ def relatorios():
         leitura_modelo=modelo.readlines()
         arquivo_categorias.writelines(leitura_modelo)
         arquivo_categorias.write("                           »» RELATÓRIO DE CATEGORIAS DO ACERVO ««\n")
-        for i in categorias:
-            arquivo_categorias.write(categorias[i]+"\n")
+        for i in range(0,len(categorias)):
+            arquivo_categorias.write(str(categorias[i])+"\n")
+        arquivo_categorias.write("           Relatório gerado em : " + str(data_atual))
         arquivo_categorias.close()
         import shutil
         shutil.copy("relatorio_categorias2.txt", "prn")
         #impressao_categorias = open('relatorio_modelo.txt', "r")
         #print(impressao_categorias.readlines())
+        #
         #impressao_categorias.close()
     
     #elif tipo_relatorio == 3:
@@ -449,8 +455,9 @@ def status(titulo_status):
             if lista_livros[i]['reserva'] == True:
                 status_livro = True
                 posicao = i
+                encontrado = True
                 break
-            encontrado=True
+
     if encontrado == False :
         print("Título não encontrado!")
     else:
