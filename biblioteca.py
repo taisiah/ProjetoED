@@ -185,7 +185,7 @@ def busca_livro():
                 print (f"Categoria.: {lista_livros[i]['categoria']}")
                 print (f"Temática..: {lista_livros[i]['tematica']}")
                 print (f"Reserva...: {lista_livros[i]['reserva']}")
-                print(f"Status.....: {lista_livros[i]['status']}")
+                print (f"Status....: {lista_livros[i]['status']}")
                 
 
     elif filtro == 2:
@@ -200,7 +200,7 @@ def busca_livro():
                 print (f"Categoria.: {lista_livros[i]['categoria']}")
                 print (f"Temática..: {lista_livros[i]['tematica']}")
                 print (f"Reserva...: {lista_livros[i]['reserva']}")
-                print(f"Status.....: {lista_livros[i]['status']}")
+                print (f"Status....: {lista_livros[i]['status']}")
                 
 
     elif filtro == 3:
@@ -215,7 +215,7 @@ def busca_livro():
                 print (f"Categoria.: {lista_livros[i]['categoria']}")
                 print (f"Temática..: {lista_livros[i]['tematica']}")
                 print (f"Reserva...: {lista_livros[i]['reserva']}")
-                print(f"Status.....: {lista_livros[i]['status']}")
+                print (f"Status....: {lista_livros[i]['status']}")
                 
 
     elif filtro == 4:
@@ -230,7 +230,7 @@ def busca_livro():
                 print (f"Categoria.: {lista_livros[i]['categoria']}")
                 print (f"Temática..: {lista_livros[i]['tematica']}")
                 print (f"Reserva...: {lista_livros[i]['reserva']}")
-                print(f"Status.....: {lista_livros[i]['status']}")
+                print (f"Status....: {lista_livros[i]['status']}")
                 
     else:
         print('Opção Inválida!')
