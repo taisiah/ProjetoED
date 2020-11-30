@@ -423,7 +423,7 @@ def relatorios():
     elif tipo_relatorio == 2:
         
         arquivo_categorias = open('relatorio_categorias2.txt',"w")
-        modelo = open('relatorio_modelo.txt', 'r', encoding="utf-8")
+        modelo = open('relatorio_modelo.txt', 'r')#, encoding="utf-8")
         leitura_modelo=modelo.readlines()
         arquivo_categorias.writelines(leitura_modelo)
         arquivo_categorias.write("                           »» RELATÓRIO DE CATEGORIAS DO ACERVO ««\n")

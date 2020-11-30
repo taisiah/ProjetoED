@@ -1,0 +1,9 @@
+     
+     ------------------------------------------------------------------------------
+     |             MORAIS LIBRARY - Sistema de Gestão Bibliotecária                        |
+     ------------------------------------------------------------------------------
+                           »» RELATÓRIO DE CATEGORIAS DO ACERVO ««
+TESTE
+TESTE2
+TESTE3
+           Relatório gerado em : 2020-11-30
