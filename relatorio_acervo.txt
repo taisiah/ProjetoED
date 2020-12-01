@@ -1,0 +1,12 @@
+     
+     ------------------------------------------------------------------------------
+     |             MORAIS LIBRARY - Sistema de Gestão Bibliotecária                        |
+     ------------------------------------------------------------------------------
+                           »» RELATÓRIO DE TÍTULOS DO ACERVO ««
+                      - ALGORITMOS
+                      - ENGLISH GRAMMAR IN USE
+                      - SIDARTA
+                      - VADE MECUM
+                      Total de títulos :4
+                          Total de volumes em estoque:22
+           Relatório gerado em : 2020-12-01
