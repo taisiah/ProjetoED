@@ -14,9 +14,9 @@ tematicas = []
 #livro => titulo,autor,ano,editora,edicao,quantidade,habilitacao
 lista_livros = []
 
+
 import os
-import os
-print(os.getcwd())
+
 
 def login (login,senha):
     for f in lista_funcionarios:
