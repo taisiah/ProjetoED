@@ -1,4 +1,4 @@
      
      ------------------------------------------------------------------------------
-     |             MORAIS LIBRARY - Sistema de Gestão Bibliotecária                        |
+     |             MORAIS LIBRARY - Sistema de Gestão Bibliotecária               |
      ------------------------------------------------------------------------------
