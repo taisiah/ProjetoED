@@ -1,12 +1,23 @@
      
      ------------------------------------------------------------------------------
-     |             MORAIS LIBRARY - Sistema de Gestão Bibliotecária                        |
+     |             MORAIS LIBRARY - Sistema de Gestão Bibliotecária               |
      ------------------------------------------------------------------------------
                            »» RELATÓRIO DE TÍTULOS DO ACERVO ««
-                      - ALGORITMOS
-                      - ENGLISH GRAMMAR IN USE
-                      - SIDARTA
-                      - VADE MECUM
-                      Total de títulos :4
-                          Total de volumes em estoque:22
-           Relatório gerado em : 2020-12-01
+
+                         Título : SIDARTA
+                        | Estoque Total: 12 | Volumes alugados: 8 |
+
+                         Título : ENGLISH GRAMMAR IN USE
+                        | Estoque Total: 4 | Volumes alugados: 0 |
+
+                         Título : VADE MECUM
+                        | Estoque Total: 1 | Volumes alugados: 0 |
+
+                         Título : ALGORITMOS
+                        | Estoque Total: 2 | Volumes alugados: 0 |
+
+                        -------- RESUMO SINTÉTICO DE ESTOQUE --------
+                             Total de Títulos.............:4
+                             Total de Volumes em Estoque..: 19
+                             Total de Volumes Alugados....: 11     ------------------------------------------------------------------------------
+      Relatório gerado em : 2020-12-02            Arquivo: relatorio_acervo.txt

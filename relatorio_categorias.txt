@@ -1,0 +1,17 @@
+     
+     ------------------------------------------------------------------------------
+     |             MORAIS LIBRARY - Sistema de Gestão Bibliotecária               |
+     ------------------------------------------------------------------------------
+
+                           »» RELATÓRIO DE CATEGORIAS DO ACERVO ««
+                           - DICIONÁRIO
+                           - DISSERTAÇÃO
+                           - LIVRO
+                           - MONOGRAFIA
+                           - PERIÓDICO
+                           - REVISTA
+                           - TESE
+
+                    Total de Categorias Cadastradas....: 7
+     ------------------------------------------------------------------------------
+     Relatório gerado em : 2020-12-02            Arquivo: relatorio_categorias.txt

@@ -317,52 +317,6 @@ def busca_livro():
 
 
 
-def aluguel_livros():
-
-    global lista_livros
-    cabecalho_sistema()
-
-    print("     ┌────────────────────────────────────────────────────────────────────────────┐")
-    print("     │                      =-=-= LOCAÇÃO DE  LIVROS =-=-=                        │")
-    print("     └────────────────────────────────────────────────────────────────────────────┘")
-    print("\n                   [1] Aluguel de Livro - [2] Devolução de Livro")
-
-    filtro = int(input("\n                    » Informe o módulo a ser acionado: "))
-
-    if filtro == 1:
-        informacao_busca = input('\n                    » Informe o TÍTULO do livro:').upper()
-        for i in range(0, len(lista_livros)):
-            if (lista_livros[i]['titulo']) == informacao_busca:
-                if (lista_livros[i]['reserva']) == True:
-                    if lista_livros[i]['qtdisponivel'] > 0:
-                        lista_livros[i]['qtdisponivel'] = lista_livros[i]['qtdisponivel'] - 1
-                        print("\n          :: Locação concluída! ::")
-                        break
-                    else:
-                        print("          :: Todas as unidades estão alugadas! ::")
-                else:
-                    print("          :: O Livro não está disponível para locação! ::")
-            else:
-                print("          :: Livro não localizado! ::")
-
-    elif filtro == 2:
-        informacao_busca = input('\n                    » Informe o TÍTULO do livro:').upper()
-        for i in range(0, len(lista_livros)):
-            if (lista_livros[i]['titulo']) == informacao_busca:
-                lista_livros[i]['qtdisponivel'] = lista_livros[i]['qtdisponivel'] + 1
-                print("          :: Devolução concluída! ::")
-            else:
-                print("          :: Livro não localizado! ::")
-    else:
-        print("          :: Opção Inválida! ::")
-
-    update_acervo_arquivo()
-
-
-
-
-'''
-
 
 def aluguel_livros():
 
@@ -411,7 +365,7 @@ def aluguel_livros():
         print("                            :: Opção Inválida! ::")
 
     update_acervo_arquivo()
-'''
+
 
 def repete_funcao(funcao):
     continua = 'N'

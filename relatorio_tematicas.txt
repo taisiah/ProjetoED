@@ -1,35 +1,30 @@
      
      ------------------------------------------------------------------------------
-     |             MORAIS LIBRARY - Sistema de Gestão Bibliotecária                        |
+     |             MORAIS LIBRARY - Sistema de Gestão Bibliotecária               |
      ------------------------------------------------------------------------------
+
                            »» RELATÓRIO DE TEMÁTICAS DO ACERVO ««
-ANATOMIA
-ARQUITETURA 
-ARTES
-BIOLOGIA
-COMPUTAÇÃO 
-DESIGN 
-DIREITO 
-ECONOMIA
-ENGENHARIA
-FRANCÊS
-FÍSICA
-GASTRONOMIA
-GEOGRAFIA
-GRAMÁTICA
-HERMANN
-HISTÓRIA
-LINGUA INGLESA
-LITERATURA 
-LÍNGUA ESPANHOLA
-MATEMÁTICA
-MECÂNICA
-PEDAGOGIA
-PORTUGUÊS
-PSICOLOGIA
-QUIMICA
-REDES
-SOCIOLOGIA
-TESTE1
-TESTE2
-           Relatório gerado em : 2020-12-01
+                           - ARQUITETURA 
+                           - ARTES
+                           - BIOLOGIA
+                           - COMPUTAÇÃO 
+                           - DESIGN 
+                           - DIREITO 
+                           - ECONOMIA
+                           - ENGENHARIA
+                           - FRANCÊS
+                           - FÍSICA
+                           - GEOGRAFIA
+                           - HISTÓRIA
+                           - LINGUA INGLESA
+                           - LITERATURA 
+                           - LÍNGUA ESPANHOLA
+                           - MATEMÁTICA
+                           - PEDAGOGIA
+                           - PORTUGUÊS
+                           - PSICOLOGIA
+                           - SOCIOLOGIA
+
+                    Total de Tematicas Cadastradas....: 20
+     ------------------------------------------------------------------------------
+      Relatório gerado em : 2020-12-02            Arquivo: relatorio_tematicas.txt
